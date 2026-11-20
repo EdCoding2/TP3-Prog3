@@ -1,0 +1,69 @@
+# TP3 Prog3 
+**infixe**:
+
+1 + 2
+
+
+**postfixe**:
+
+1 2 +
+
+## Exemple:
+```
+Infixe : 100 / ( 2 + 3 ) - 7 % 4 - 1
+
+
+-> Enfiler dans une file:
+|100 |/ |(| 2| +| 3| )| -| 7| %| 4| -| 1|
+
+
+Transformation à postfixe:
+une file, une pile(d'opérateurs)
+
+
+1. (on push l'opérande et on la pop de infixe(file))
+2. 
+
+
+
+Postfixe : 100 2 3 + / 7 4 % - 1 -
+Évaluation : 16
+```
+
+# Postfixe au Résultat
+besoin d'une pile d'opérande, et la file postfixe
+
+faire attention avec la pile(last in first out):
+
+100 2 3
+
++ 
+
+= 2(premier terme) +  3(deuxieme terme)
+
+(il manque un chose dans la file)
+**le destructeur**
+
+(si tu include slnode dans stack.hpp et queue.hpp -> erreur de compilation)
+:
+#pragma once (dans slNode)
+
+# classe string:
+.size = savoir la taille
+
+# Conversion
+## chaîne à entier
+
+int entier = stoi(chaîne);
+
+## entier -> chaîne
+
+string chaine = to_string(entier);
+
+getPriority()?
+
+indice tech du carousel
+
+pas de validation à faire
+
+pas de réels juste des entiers

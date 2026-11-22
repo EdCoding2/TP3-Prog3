@@ -8,6 +8,11 @@ public:
         first = nullptr;
         count = 0;
     }
+    
+    ~Pile(){
+        while(first)
+            pop();
+    }
 
     void push(T data){
         first = new SLNode<T>(data, first);

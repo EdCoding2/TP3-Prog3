@@ -27,18 +27,18 @@ public:
         ++count;
     }
     
-    /// @brief Enfiler au devant.
-    /// @param data Donnée à enfiler.
-    void push_front(T data){
-        if(last){
-            last->right = new SLNode<T>(data, last->right);
-        }
-        else{
-            last = new SLNode<T>(data, nullptr);
-            last->right = last;
-        }
-        ++count;
-    }
+    // /// @brief Enfiler au devant.
+    // /// @param data Donnée à enfiler.
+    // void push_front(T data){
+    //     if(last){
+    //         last->right = new SLNode<T>(data, last->right);
+    //     }
+    //     else{
+    //         last = new SLNode<T>(data, nullptr);
+    //         last->right = last;
+    //     }
+    //     ++count;
+    // }
 
     void pop_front(){
         if(!last)
@@ -55,26 +55,26 @@ public:
         --count;
     }
 
-    void pop_back(){
-        if(!last)
-            throw std::length_error("File vide!");
+    // void pop_back(){
+    //     if(!last)
+    //         throw std::length_error("File vide!");
 
-        if(last->right == last){   // un seul élément
-            delete last;
-            last = nullptr;
-        }
-        else{
-            SLNode<T>* runner = last->right;   // le devant
+    //     if(last->right == last){   // un seul élément
+    //         delete last;
+    //         last = nullptr;
+    //     }
+    //     else{
+    //         SLNode<T>* runner = last->right;   // le devant
 
-            while(runner->right != last)       // s'arrête sur l'avant-dernier
-                runner = runner->right;
+    //         while(runner->right != last)       // s'arrête sur l'avant-dernier
+    //             runner = runner->right;
 
-            runner->right = last->right;       // l'avant-dernier pointe sur le devant
-            delete last;
-            last = runner;
-        }
-        --count;
-    }
+    //         runner->right = last->right;       // l'avant-dernier pointe sur le devant
+    //         delete last;
+    //         last = runner;
+    //     }
+    //     --count;
+    // }
 private:
     SLNode<T>* last;    
     size_t count;

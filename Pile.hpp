@@ -30,11 +30,11 @@ public:
     }
 
     T top(){
-        // if(first)
-        //     return first->data;
-        // throw std::length_error("Pile vide!");
+        if(first)
+            return first->data;
+        throw std::length_error("Pile vide!");
 
-        first ? return first->data : throw std::length_error("Pile vide!");
+        // first ? return first->data : throw std::length_error("Pile vide!");
     }
 
     size_t size(){

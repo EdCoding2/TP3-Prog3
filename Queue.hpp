@@ -1,14 +1,15 @@
 #include <stdexcept>
+#include "SLNode.hpp"
 
 template <typename T>
 class Queue{
 public:
-    Dequeue(){
+    Queue(){
         last = nullptr;
         count = 0;
     }
 
-    ~Dequeue(){
+    ~Queue(){
         while(last)
             pop_back();
     }
@@ -22,7 +23,7 @@ public:
         }
         else{
             last = new SLNode<T>(data, nullptr);
-            last-right = last;
+            last->right = last;
         }
         ++count;
     }

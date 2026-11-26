@@ -1,22 +1,27 @@
 #include <stdexcept>
 #include "SLNode.hpp"
+#include "SLNode.hpp"
 
+/// @brief Queue dynamique.
+/// @tparam T Type de donnée.
 template <typename T>
 class Queue{
 public:
+    /// @brief Constructeur.
     Queue(){
         last = nullptr;
         count = 0;
     }
 
+    /// @brief Destructeur.
     ~Queue(){
         while(last)
-            pop_back();
+            pop();
     }
 
-    /// @brief Enfiler au derrière.
+    /// @brief Enfiler.
 	/// @param data Donnée à ajouter à l'arrière de la file
-    void push_back(T data){
+    void push(T data){
         if(last){
             last->right = new SLNode<T>(data, last->right);
             last = last->right;
@@ -24,24 +29,13 @@ public:
         else{
             last = new SLNode<T>(data, nullptr);
             last->right = last;
+            last->right = last;
         }
         ++count;
     }
     
-    // /// @brief Enfiler au devant.
-    // /// @param data Donnée à enfiler.
-    // void push_front(T data){
-    //     if(last){
-    //         last->right = new SLNode<T>(data, last->right);
-    //     }
-    //     else{
-    //         last = new SLNode<T>(data, nullptr);
-    //         last->right = last;
-    //     }
-    //     ++count;
-    // }
-
-    void pop_front(){
+    /// @brief Défiler.
+    void pop(){
         if(!last)
             throw std::length_error("File vide!");
 
@@ -56,27 +50,29 @@ public:
         --count;
     }
 
-    // void pop_back(){
-    //     if(!last)
-    //         throw std::length_error("File vide!");
+    /// @brief Premier élément.
+	/// @return Donnée à l'avant de la file.
+    T front(){
+        if(last)
+            return last->right->data;
+        throw::length_error("File vide!");
+    }
+    
+    /// @brief Dernier élément.
+    /// @return Donnée en arrière de la file. 
+    T back(){
+        if(last)
+            return last->data;
+        throw::length_error("File vide!")
+    }
+    
+    /// @brief Compte
+	/// @return Nombre de données dans la file
+    size_t size(){
+        return count;
+    }
 
-    //     if(last->right == last){   // un seul élément
-    //         delete last;
-    //         last = nullptr;
-    //     }
-    //     else{
-    //         SLNode<T>* runner = last->right;   // le devant
-
-    //         while(runner->right != last)       // s'arrête sur l'avant-dernier
-    //             runner = runner->right;
-
-    //         runner->right = last->right;       // l'avant-dernier pointe sur le devant
-    //         delete last;
-    //         last = runner;
-    //     }
-    //     --count;
-    // }
 private:
-    SLNode<T>* last;    
-    size_t count;
+    SLNode<T>* last; ///< Dernier Noeud.
+    size_t count; ///< Nombre de données
 };
